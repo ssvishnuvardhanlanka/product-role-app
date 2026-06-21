@@ -119,9 +119,17 @@ export default function Products() {
               </td>
 
               <td>
-                <input
+                <textarea
                   value={newProduct.details}
                   placeholder="Product details"
+                  rows={5}
+                  style={{
+                    width: '100%',
+                    minHeight: '100px',
+                    maxHeight: '180px',
+                    overflowY: 'auto',
+                    resize: 'vertical',
+                  }}
                   onChange={(e) =>
                     setNewProduct({
                       ...newProduct,
@@ -159,8 +167,16 @@ export default function Products() {
 
               <td>
                 {editingId === product.id ? (
-                  <input
+                  <textarea
                     value={editingProduct.details}
+                    rows={5}
+                    style={{
+                      width: '100%',
+                      minHeight: '100px',
+                      maxHeight: '180px',
+                      overflowY: 'auto',
+                      resize: 'vertical',
+                    }}
                     onChange={(e) =>
                       setEditingProduct({
                         ...editingProduct,
@@ -169,7 +185,15 @@ export default function Products() {
                     }
                   />
                 ) : (
-                  product.details
+                  <div
+                    style={{
+                      maxHeight: '120px',
+                      overflowY: 'auto',
+                      whiteSpace: 'pre-wrap',
+                    }}
+                  >
+                    {product.details}
+                  </div>
                 )}
               </td>
 
@@ -181,9 +205,7 @@ export default function Products() {
                         Save
                       </button>
 
-                      <button onClick={cancelEdit}>
-                        Cancel
-                      </button>
+                      <button onClick={cancelEdit}>Cancel</button>
                     </>
                   ) : (
                     <>
